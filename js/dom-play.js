@@ -1,10 +1,21 @@
-// document.querySelector(".hamlet").style.backgroundColor = "orange";
+function highlightActor(actor) {
 
-function highlight(el) {
+    const spans = document.querySelectorAll("div#play span");
 
-    if (el.style.backgroundColor == '') {
-        el.style.backgroundColor = 'green';
-    } else {
-        el.style.backgroundColor = '';  
+    for (const mySpan of spans) {
+        if (mySpan.dataset.actor == actor) {
+            mySpan.style.backgroundColor = 'green';
+        } else {
+            mySpan.style.backgroundColor = '';
+        }
     }
+}
+
+const spans = document.querySelectorAll("div#play span");
+// console.log(spans);
+
+for (const mySpan of spans) {
+    mySpan.addEventListener("click", function (ev) {
+        highlightActor(mySpan.dataset.actor);
+    });
 }
